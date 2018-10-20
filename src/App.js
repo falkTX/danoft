@@ -1,26 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Game from './game';
+import Home from './home';
 
 class App extends Component {
+  state = {
+    gameRunning: false,
+    debugMode: false,
+    fadingOut: false,
+  }
+
+  startDemo = () => {
+    this.setState({ fadingOut : true })
+    setTimeout(this.startDemo2, 200)
+  }
+
+  startDemo2 = () => {
+    this.setState({ gameRunning: true })
+  }
+
+  startDebug = () => {
+    this.setState({ debugMode: true })
+  }
+
   render() {
+    console.log(this.state);
+
+    const { gameRunning, debugMode, fadingOut } = this.state;
+
+    if (gameRunning)
+      return <Game />;
+    
+    if (debugMode)
+      return <Game />;
+    
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Home
+        startDemo={this.startDemo}
+        startDebug={this.startDebug}
+        fadingOut={fadingOut}
+      />
     );
   }
 }
