@@ -25,7 +25,8 @@ class Game extends Component {
 
   preload() {
     console.log("Game preload");
-    this.load.setBaseURL('http://localhost:3000');
+    // TODO use window.location
+    this.load.setBaseURL('http://192.168.1.47:3000');
 
     this.load.image('sky', 'assets/skies/space3.png');
     this.load.image('logo', 'assets/sprites/phaser.png');
@@ -33,11 +34,19 @@ class Game extends Component {
   }
 
   render() {
+    const width = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+
+    const height = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+
     return (
       <GameComponent
         id='Game'
-        width={800}
-        height={600}
+        width={width}
+        height={height}
         create={this.create}
         preload={this.preload}
       />

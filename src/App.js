@@ -11,7 +11,7 @@ class App extends Component {
 
   startDemo = () => {
     this.setState({ fadingOut : true })
-    setTimeout(this.startDemo2, 200)
+    setTimeout(this.startDemo2, 2000)
   }
 
   startDemo2 = () => {
