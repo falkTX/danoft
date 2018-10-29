@@ -1,0 +1,59 @@
+# Ideas for game "scenes"
+
+Tests:
+1. intro page with text, changes to next one after 5 secs
+2. 2nd page, different, to make sure we can handle scene changes
+
+3. scoller thing
+4. collision detection
+5. drawing text and allowing to click on text
+
+## Intro
+
+Some sort of intro, explaining there are different "games". or maybe make it a surprise?
+
+## 1D Tetris
+
+Just a single block falling down.
+Obviously joke, for being impossible to lose.
+Could be very first game.
+
+Black borders on both sides.
+Right side has "controls" help: press down to go faster, p for pause. Also high-score and current level.
+Music that changes on new level. original tetris one?
+
+If enough time: Goes faster and faster... Win at the end, with congrats.
+
+## Pong
+
+start very hard as joke?
+and on 3 losses, make bar almost full, so almost impossible to lose?
+
+## Flappy-bird scroller like thing
+
+Berlin/German theme?
+Add classic german folklore/pop songs for sure
+
+## Scroller type 2? RPG?
+
+Person collecting beers on the group
+0.25€ per bottle
+
+## Copy some card game animation, needs to be there hehe
+
+## Game with questions, multi-answer
+
+Leave note saying bad graphics are intentional, for artistic reasons :)
+
+Player has to click on correct answer before the next question appears.
+Make 3rd question have an incorrect answer, when player clicks on bad answer give similar error. Stop at 3 attempts.
+If player insists on the obvious correct answer, give super congrats.
+Needs proper logic to only give different errors. if player choses "correct" one 2 times give different error.
+
+End showing score.
+Allow to repeat :D
+
+## Others
+
+Investigate old daniela favorite game, based by music she sent once.
+Make something similar..?
