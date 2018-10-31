@@ -21,7 +21,7 @@ class GameComponent extends Component {
         create,
         preload,
       }
-    };  
+    };
 
     this.game = new Phaser.Game(config);
   }

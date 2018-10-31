@@ -25,8 +25,7 @@ class Game extends Component {
 
   preload() {
     console.log("Game preload");
-    // TODO use window.location
-    this.load.setBaseURL('http://192.168.1.47:3000');
+    this.load.setBaseURL(window.location.origin);
 
     this.load.image('sky', 'assets/skies/space3.png');
     this.load.image('logo', 'assets/sprites/phaser.png');
