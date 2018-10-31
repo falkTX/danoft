@@ -1,56 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GameComponent from '../reusable/GameComponent';
+import { _1DTetris, Pause, TextClick } from './scenes';
 
-class Game extends Component {
-  create() {
-    console.log("Game created");
-    this.add.image(400, 300, 'sky');
+const Game = () => {
+  const width = window.innerWidth
+  || document.documentElement.clientWidth
+  || document.body.clientWidth;
 
-    var particles = this.add.particles('red');
+  const height = window.innerHeight
+  || document.documentElement.clientHeight
+  || document.body.clientHeight;
 
-    var emitter = particles.createEmitter({
-        speed: 100,
-        scale: { start: 1, end: 0 },
-        blendMode: 'ADD'
-    });
+  // const scenes = [ _1DTetris, Pause ];
+  const scenes = [ TextClick, _1DTetris, Pause ];
 
-    var logo = this.physics.add.image(400, 100, 'logo');
-
-    logo.setVelocity(100, 200);
-    logo.setBounce(1, 1);
-    logo.setCollideWorldBounds(true);
-
-    emitter.startFollow(logo);
-  }
-
-  preload() {
-    console.log("Game preload");
-    this.load.setBaseURL(window.location.origin);
-
-    this.load.image('sky', 'assets/skies/space3.png');
-    this.load.image('logo', 'assets/sprites/phaser.png');
-    this.load.image('red', 'assets/particles/red.png');
-  }
-
-  render() {
-    const width = window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
-
-    const height = window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight;
-
-    return (
-      <GameComponent
-        id='Game'
-        width={width}
-        height={height}
-        create={this.create}
-        preload={this.preload}
-      />
-    );
-  }
+  return (
+    <GameComponent
+      id='Game'
+      width={width}
+      height={height-5} // FIXME
+      scene={scenes}
+    />
+  );
 };
 
 export default Game;

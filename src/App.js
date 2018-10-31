@@ -4,7 +4,7 @@ import Home from './home';
 
 class App extends Component {
   state = {
-    gameRunning: true,
+    gameRunning: false,
     debugMode: false,
     fadingOut: false,
   }

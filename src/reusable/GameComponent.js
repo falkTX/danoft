@@ -3,24 +3,23 @@ import Phaser from 'phaser';
 
 class GameComponent extends Component {
   componentDidMount() {
-    const { id, width, height, create, preload } = this.props;
+    const { id, width, height, scene } = this.props;
 
     var config = {
       type: Phaser.AUTO,
       parent: id,
+      backgroundColor: '#244d2f',
       // pixelArt: true,
       width,
       height,
+      scene,
       physics: {
-          default: 'arcade',
-          arcade: {
-              gravity: { y: 200 }
-          }
+        default: 'impact',
+        impact: {
+          gravity: 100,
+          debug: false,
+        }
       },
-      scene: {
-        create,
-        preload,
-      }
     };
 
     this.game = new Phaser.Game(config);
