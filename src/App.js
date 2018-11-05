@@ -5,7 +5,6 @@ import Home from './home';
 class App extends Component {
   state = {
     gameRunning: false,
-    debugMode: false,
     fadingOut: false,
   }
 
@@ -18,25 +17,15 @@ class App extends Component {
     this.setState({ gameRunning: true })
   }
 
-  startDebug = () => {
-    this.setState({ debugMode: true })
-  }
-
   render() {
-    console.log(this.state);
-
-    const { gameRunning, debugMode, fadingOut } = this.state;
+    const { gameRunning, fadingOut } = this.state;
 
     if (gameRunning)
       return <Game />;
-    
-    if (debugMode)
-      return <Game />;
-    
+
     return (
       <Home
         startDemo={this.startDemo}
-        startDebug={this.startDebug}
         fadingOut={fadingOut}
       />
     );

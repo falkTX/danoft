@@ -9,14 +9,9 @@ const Home = (props) => (
         Hallo Daniela, ich habe etwas für dich gemacht!^.^)/
       </p>
       <button onClick={props.startDemo} className={props.fadingOut ? "Home-fading-out" : ""}>
-        Demo Anfangen
+        Anfangen!
       </button>
     </header>
-    <footer>
-      <button onClick={props.startDebug}>
-        Debug
-      </button>
-    </footer>
   </div>
 );
 

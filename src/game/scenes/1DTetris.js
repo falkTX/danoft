@@ -4,11 +4,12 @@ const kBlockSize = 32;
 const kTextSize = 16;
 
 const kInitialX = 400;
-const kInitialY = 80;
+const kInitialY = 90;
 const kWidth = kBlockSize * 8;
 const kHeight = kBlockSize * 16;
 
-const kMaxBlocks = 50;
+const kMaxBlocks = 100;
+const kHighScore = 100;
 const kImages = [
   'bnet', 'protoss', 'sc2', 'terran', 'zerg',
 ];
@@ -36,16 +37,16 @@ class _1DTetris extends Phaser.Scene {
   create() {
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    this.add.text(64, kTextSize * 2, 'Falling Pieces \\o/, to test keyboard input, pause and physics.\nLet 50 pieces drop or run out of space in the top to finish the game.',
+    this.add.text(64, kTextSize * 2, `Falling Pieces \\o/, the "real" "game", with keyboard input, pause and physics, yay..?\nLet ${kMaxBlocks} pieces drop or run out of space in the top to finish the game.\nScore ${kHighScore} points or more to unlock the code!`,
                  { font: `${kTextSize}px Monospace`, fill: '#fff' });
 
-    this.textPieces = this.add.text(64, kTextSize * 5, `Pieces: 0/${kMaxBlocks}`,
+    this.textPieces = this.add.text(64, kTextSize * 6, `Pieces: 0/${kMaxBlocks}`,
                                     { font: `${kTextSize}px Monospace`, fill: '#aaf' });
 
-    this.textScore = this.add.text(64, kTextSize * 6, `Score: 0 points`,
+    this.textScore = this.add.text(64, kTextSize * 7, `Score: 0 points`,
                                    { font: `${kTextSize}px Monospace`, fill: '#aaf' });
 
-    this.add.text(64, kTextSize * 8, 'Controls:\n P: Pause\n R: Restart\n Keyboard arrows moves block',
+    this.add.text(64, kTextSize * 9, 'Controls:\n P: Pause\n R: Restart\n Keyboard arrows moves block',
                   { font: `${kTextSize}px Monospace`, fill: '#dfd' });
 
     this.input.keyboard.on('keydown_P', () => {
@@ -92,7 +93,7 @@ class _1DTetris extends Phaser.Scene {
   addRect() {
     const img = kImages[Phaser.Math.Between(0, kImages.length-1)];
 
-    this.currentBlock = this.impact.add.image(500, 100, img)
+    this.currentBlock = this.impact.add.image(kInitialX + kWidth / 2, kInitialY + 20, img)
       .setActiveCollision()
       .setBounce(0.5)
       .setFriction(100, 40)
@@ -139,8 +140,15 @@ class _1DTetris extends Phaser.Scene {
     }
 
     this.gameOver = true;
-    this.add.text(225, 280, 'Game Over',
-                  { font: `96px Monospace`, fill: '#fff' });
+
+    if (this.score >= kHighScore) {
+      this.add.text(225, 280, 'You win!\nThe unlock code is 228\nHappy birthday Daniela!',
+                    { font: `36px Monospace`, fill: '#fff' });
+    } else {
+      this.add.text(225, 280, 'Game Over',
+                    { font: `96px Monospace`, fill: '#fff' });
+
+    }
 
     this.blocks.forEach(block =>
       block

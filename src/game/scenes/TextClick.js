@@ -4,24 +4,22 @@ const kTargetClicks = 50;
 const kTextSize = 64;
 
 class TextClick extends Phaser.Scene {
-  constructor()
-  {
+  constructor() {
     super({key: 'TextClick' });
 
     this.clickedTimes = 0;
     this.timeoutFn = this.timeoutFn.bind(this);
   }
 
-  create()
-  {
+  create() {
     const koreanChars = [
         'ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅿ','ㅇ','ㆁ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ','ㆆ',
     ];
 
-    this.add.text(64, kTextSize / 2, `Clicking text game, to test drawing text and events.\nClick randomly with the mouse ${kTargetClicks} times to win the game! :P`,
+    this.add.text(64, kTextSize / 2, `Clicking text "game".\nClick randomly with the mouse ${kTargetClicks} times to win the game! :P\nPS: I know this part is boring, I made this as a test first, but left it here.\nThe real deal comes after this.`,
                  { font: `${kTextSize / 4}px Monospace`, fill: '#fff' });
 
-    this.textScore = this.add.text(64, kTextSize * 5 / 4, `Score 0/${kTargetClicks}`,
+    this.textScore = this.add.text(64, kTextSize * 7 / 4, `Score 0/${kTargetClicks}`,
                                    { font: `${kTextSize / 4}px Monospace`, fill: '#aaf' });
 
     this.input.on('pointerdown', (p) => {
